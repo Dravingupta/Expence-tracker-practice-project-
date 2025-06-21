@@ -1,0 +1,2 @@
+# Expence-tracker--practice-project-
+Expense Tracker App (Practice Project)  Just built this fully responsive Expense Tracker web app from scratch using Node.js, Express.js, and EJS.  It lets you add, edit, and delete both essential and unnecessary expenses with total calculations and a clean UI.  This is a pure practice project — no database used.   Just focusing on sharpening my skills in backend routing, EJS templating, and responsive layout.

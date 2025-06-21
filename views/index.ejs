@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="/index.css" />
+  <link rel="stylesheet" href="/footer.css"/>
+</head>
+<body>
+  <main class="content-wrapper">
+    <header class="header">
+      <h1>EXPENSE Tracker</h1>
+      <a href="/new" class="add-task-btn">+ Add New Expense</a>
+    </header>
+
+    <section>
+      <div class="section-header">
+        <h2>🛒 Essentials Expenses</h2>
+        <div class="total-box">Total: ₹ <%= essentialsTotal %></div>
+      </div>
+
+      <div class="expense-list">
+        <% if(essentials.length === 0){ %>
+          <p style="color:#777; text-align:center; width:100%;">No essentials added yet.</p>
+        <% } %>
+
+        <% essentials.forEach(expense => { %>
+          <div class="expense-card">
+            <div class="expense-header-row">
+              <div class="expense-title"><%= expense.title %></div>
+              <div class="expense-date"><%= new Date(expense.date).toLocaleDateString('en-IN', {day:'2-digit', month:'short', year:'numeric'}) %></div>
+            </div>
+            <div class="expense-description"><%= expense.description || "No description" %></div>
+            <div class="expense-footer">
+              <div class="expense-amount-payment">
+                <div class="expense-amount">₹ <%= expense.amount %></div>
+                <div class="expense-payment">Payment: <strong><%= expense.paymentMethod %></strong></div>
+              </div>
+              <div class="expense-actions">
+                <form method="GET" action="/edit/essentials/<%= expense.id %>">
+                  <button class="edit" type="submit">Edit</button>
+                </form>
+                <form method="POST" action="/delete/essentials/<%= expense.id %>?_method=DELETE">
+                  <button class="delete" type="submit">Delete</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <h2>🎈 Unnecessary Expenses</h2>
+        <div class="total-box">Total: ₹ <%= extrasTotal %></div>
+      </div>
+
+      <div class="expense-list">
+        <% if(extras.length === 0){ %>
+          <p style="color:#777; text-align:center; width:100%;">No unnecessary expenses added yet.</p>
+        <% } %>
+
+        <% extras.forEach(expense => { %>
+          <div class="expense-card">
+            <div class="expense-header-row">
+              <div class="expense-title"><%= expense.title %></div>
+              <div class="expense-date"><%= new Date(expense.date).toLocaleDateString('en-IN', {day:'2-digit', month:'short', year:'numeric'}) %></div>
+            </div>
+            <div class="expense-description"><%= expense.description || "No description" %></div>
+            <div class="expense-footer">
+              <div class="expense-amount-payment">
+                <div class="expense-amount">₹ <%= expense.amount %></div>
+                <div class="expense-payment">Payment: <strong><%= expense.paymentMethod %></strong></div>
+              </div>
+              <div class="expense-actions">
+                <form method="GET" action="/edit/extras/<%= expense.id %>">
+                  <button class="edit" type="submit">Edit</button>
+                </form>
+                <form method="POST" action="/delete/extras/<%= expense.id %>?_method=DELETE">
+                  <button class="delete" type="submit">Delete</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </section>
+  </main>
+
+  <%- include('footer') %>
+</body>
+</html>

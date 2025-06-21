@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Add New Expense</title>
+  <link rel="stylesheet" href="/new.css" />
+  <link rel="stylesheet" href="/footer.css" />
+</head>
+<body>
+  <div class="page-wrapper">
+    <div class="form-container">
+      <h1>Add a New Expense</h1>
+      <form method="POST" action="/" novalidate>
+        <div class="input-row">
+          <div>
+            <label for="title">Expense Title</label>
+            <input type="text" id="title" name="title" required />
+          </div>
+          <div>
+            <label for="catagory">Category</label>
+            <select id="catagory" name="catagory" required>
+              <option value="" disabled selected>-- Select Category --</option>
+              <option value="Essentials">Essentials</option>
+              <option value="Unnecessary">Unnecessary</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="description">Description</label>
+        <textarea id="description" name="description"></textarea>
+
+        <div class="input-row">
+          <div>
+            <label for="amount">Amount (₹)</label>
+            <input type="number" id="amount" name="amount" min="0" step="0.01" required />
+          </div>
+          <div>
+            <label for="date">Date</label>
+            <input type="date" id="date" name="date" required />
+          </div>
+        </div>
+
+        <label for="paymentMethod">Payment Method</label>
+        <select id="paymentMethod" name="paymentMethod" required>
+          <option value="" disabled selected>-- Select Payment Method --</option>
+          <option value="Cash">Cash</option>
+          <option value="UPI">UPI</option>
+        </select>
+
+        <button type="submit" class="submit-btn">Add Expense</button>
+      </form>
+
+      <div id="error-message"></div>
+
+      <a class="back-link" href="/">← Back to Expense List</a>
+    </div>
+
+    <footer>
+      <%- include('footer') %>
+    </footer>
+  </div>
+
+  <script>
+    const form = document.querySelector("form");
+    const errorMessage = document.getElementById("error-message");
+
+    form.addEventListener("submit", function (e) {
+      errorMessage.textContent = "";
+
+      const title = document.getElementById("title");
+      const category = document.getElementById("catagory");
+      const amount = document.getElementById("amount");
+      const date = document.getElementById("date");
+      const payment = document.getElementById("paymentMethod");
+
+      let errors = [];
+
+      if (!title.value.trim()) errors.push("Expense Title is required.");
+      if (!category.value) errors.push("Please select a Category.");
+      if (!amount.value) errors.push("Amount is required.");
+      if (!payment.value) errors.push("Please select a Payment Method.");
+
+      if (!date.value) {
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+        date.value = `${yyyy}-${mm}-${dd}`;
+      }
+
+      if (errors.length > 0) {
+        e.preventDefault();
+        errorMessage.innerHTML = errors.join("<br>");
+      }
+    });
+  </script>
+</body>
+</html>

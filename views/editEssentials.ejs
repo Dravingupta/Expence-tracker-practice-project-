@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Edit Essential Expense</title>
+  <link rel="stylesheet" href="/edit.css" />
+  <link rel="stylesheet" href="/footer.css" />
+</head>
+<body>
+  <div class="page-wrapper">
+    <div class="form-container">
+      <h1>Edit Essential Expense</h1>
+      <form method="POST" action="/edit/essentials/<%= expense.id %>?_method=PUT" novalidate>
+
+        <div class="input-row">
+          <div>
+            <label for="title">Expense Title</label>
+            <input type="text" id="title" name="title" value="<%= expense.title %>" required />
+          </div>
+          <div>
+            <label for="catagory">Category</label>
+            <select id="catagory" name="catagory" required>
+              <option value="Essentials" <%= expense.catagory === 'Essentials' ? 'selected' : '' %>>Essentials</option>
+              <option value="Unnecessary" <%= expense.catagory === 'Unnecessary' ? 'selected' : '' %>>Unnecessary</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="description">Description</label>
+        <textarea id="description" name="description"><%= expense.description %></textarea>
+
+        <div class="input-row">
+          <div>
+            <label for="amount">Amount (₹)</label>
+            <input type="number" id="amount" name="amount" value="<%= expense.amount %>" min="0" step="0.01" required />
+          </div>
+          <div>
+            <label for="date">Date</label>
+            <input type="date" id="date" name="date" value="<%= expense.date %>" required />
+          </div>
+        </div>
+
+        <label for="paymentMethod">Payment Method</label>
+        <select id="paymentMethod" name="paymentMethod" required>
+          <option value="Cash" <%= expense.paymentMethod === 'Cash' ? 'selected' : '' %>>Cash</option>
+          <option value="UPI" <%= expense.paymentMethod === 'UPI' ? 'selected' : '' %>>UPI</option>
+        </select>
+
+        <button type="submit" class="submit-btn">Update Expense</button>
+      </form>
+
+      <a class="back-link" href="/">← Back</a>
+    </div>
+
+    <footer>
+      <%- include('footer') %>
+    </footer>
+  </div>
+</body>
+</html>

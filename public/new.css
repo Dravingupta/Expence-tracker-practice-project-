@@ -1,0 +1,129 @@
+/* Reset & Base */
+body, html {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.form-container {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  max-width: 600px;
+  width: 95%;
+  box-sizing: border-box;
+  margin: 40px auto 20px auto;
+}
+
+/* Heading */
+.form-container h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.9rem;
+  color: #34495e;
+  border-bottom: 2px solid #2980b9;
+  padding-bottom: 8px;
+  display: inline-block;
+}
+
+/* Form Layout */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Input Row for side-by-side fields */
+.input-row {
+  display: flex;
+  gap: 20px;
+}
+
+.input-row > div {
+  flex: 1;
+}
+
+/* Label + Input Styling */
+label {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 6px;
+  display: block;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f0f3f5;
+  box-sizing: border-box;
+  transition: border 0.3s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #2980b9;
+  outline: none;
+}
+
+/* Submit Button */
+.submit-btn {
+  background-color: #2980b9;
+  color: white;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #1c5980;
+}
+
+/* Back Link */
+.back-link {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  color: #2980b9;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.back-link:hover {
+  color: #1c5980;
+}
+
+/* Error message styling */
+#error-message {
+  color: #e74c3c;
+  font-weight: 600;
+  text-align: left;
+  margin-left: 10px;
+  margin-top: 10px;
+  line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .input-row {
+    flex-direction: column;
+  }
+}
