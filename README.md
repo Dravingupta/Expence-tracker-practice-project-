@@ -28,32 +28,18 @@ It allows users to manage their daily spending across two categories: **Essentia
 
 <br>
 
-## 📂 Project Structure
 
-├── index.js
-├── views/
-│ ├── index.ejs
-│ ├── new.ejs
-│ ├── editEssentials.ejs
-│ ├── editExtras.ejs
-│ └── footer.ejs
-├── public/
-│ ├── index.css
-│ └── footer.css
-├── package.json
-
-
----
 
 ## 🖥️ How to Run Locally
 
 bash
-git clone https://github.com/your-username/expense-tracker
-cd expense-tracker
-npm install
-node index.js
+git clone https://github.com/your-username/expense-tracker <br>
+cd expense-tracker <br>
+npm install<br>
+node index.js<br>
 
-After running the server, open your browser and visit: http://localhost:12
+After running the server, open your browser and visit: http://localhost:12<br>
+
 
 
 
