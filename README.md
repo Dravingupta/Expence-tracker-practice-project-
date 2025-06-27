@@ -38,6 +38,8 @@ cd expense-tracker <br>
 npm install<br>
 node index.js<br>
 
+Thankyou for reading
+
 After running the server, open your browser and visit: http://localhost:12<br>
 
 
